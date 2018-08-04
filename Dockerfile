@@ -10,7 +10,8 @@ ARG DOCKER_VER=18.06.0-ce
 ARG DOCKER_COMPOSE_VER=1.22.0
 
 COPY --from=0 /go/src/github.com/hashicorp/packer/pkg/linux_amd64/packer /usr/bin/packer
-RUN yum install -y git unzip openssh-clients &&\
+RUN yum -y update && yum install -y epel-release &&\
+    yum install -y git unzip openssh-clients jq &&\
     # curl -sL --fail -o /tmp/packer.zip https://releases.hashicorp.com/packer/${PACKER_VER}/packer_${PACKER_VER}_linux_amd64.zip &&\
     # cd /usr/bin && unzip /tmp/packer.zip && chmod +x /usr/bin/packer &&\
     # rm /tmp/packer.zip &&\

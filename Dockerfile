@@ -1,6 +1,6 @@
 FROM golang:1.9.2
 RUN go get github.com/hashicorp/packer
-RUN cd /go/src/github.com/hashicorp/packer && git checkout fe9e1bc9af46014c0e36ada41f884e276adb1323
+RUN cd /go/src/github.com/hashicorp/packer && git checkout 39fc8593deae0999d211c482cd756cd4fdc55832
 RUN cd $GOPATH/src/github.com/hashicorp/packer && PACKER_DEV=1 make bin
 
 FROM centos:7

@@ -2,4 +2,9 @@
 
 . ./hooks/env
 
-docker build --build-arg "SOURCE_COMMIT=$GIT_SHA1" --build-arg "DOCKERFILE_PATH=$DOCKERFILE_PATH" --build-arg "SOURCE_TYPE=$SOURCE_TYPE" -t $IMAGE_NAME $DOCKERFILE_PATH
+docker build \
+    --build-arg "SOURCE_COMMIT=$GIT_SHA1" \
+    --build-arg "DOCKERFILE_PATH=$DOCKERFILE_PATH" \
+    --build-arg "SOURCE_TYPE=$SOURCE_TYPE" \
+    ${YUM_PROXY:+--build-arg "YUM_PROXY=$YUM_PROXY"} \
+    -t $IMAGE_NAME $DOCKERFILE_PATH

@@ -3,12 +3,15 @@
 # RUN cd /go/src/github.com/hashicorp/packer && git checkout 39fc8593deae0999d211c482cd756cd4fdc55832
 # RUN cd $GOPATH/src/github.com/hashicorp/packer && PACKER_DEV=1 make bin
 
-FROM centos:7
+FROM centos:8
 
-ARG PACKER_VER=1.4.1
-ARG DOCKER_VER=18.09.6
-ARG DOCKER_COMPOSE_VER=1.24.0
+ARG PACKER_VER=1.5.6
+ARG DOCKER_VER=19.03.8
+ARG DOCKER_COMPOSE_VER=1.25.5
 ARG YUM_PROXY
+ARG SOURCE_COMMIT
+ARG SOURCE_TYPE
+ARG DOCKERFILE_PATH
 
 # COPY --from=0 /go/src/github.com/hashicorp/packer/pkg/linux_amd64/packer /usr/bin/packer
 RUN if [ -n "${YUM_PROXY}" ]; then echo "proxy=${YUM_PROXY}" >> /etc/yum.conf; fi &&\
